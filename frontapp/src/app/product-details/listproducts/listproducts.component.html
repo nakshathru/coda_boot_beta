@@ -1,0 +1,51 @@
+<div class="jumbotron mx-auto">
+  <h1 class="display-4">Product Details</h1>
+  <button type="button" class="btn btn-primary" (click)="openDialog()">Add new product</button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm mb-2">
+        <h4>Name</h4></div>
+    <div class="col-sm mb-2">
+        <h4>Category</h4>
+    </div>
+    <div class="col-sm mb-2">
+        <h4>Description</h4>
+    </div>
+
+    <div class="col-sm mb-2">
+        <h4>Action</h4>
+      </div>
+
+  </div>
+
+</div>
+<ul class="list-group" *ngFor="let product of productlist">
+
+<div class="container">
+<div class="row">
+  <div class="col-sm mb-2">
+      {{product.name}}
+  </div>
+  <div class="col-sm mb-2">
+      {{product.category}}
+  </div>
+  <div class="col-sm mb-2">
+      {{product.description}}
+  </div>
+
+  <div class="col-sm mb-2">
+      <span class="badge badge-primary badge-pill" (click)="openDialogEdit(product)">edit</span>
+      <span class=" ml-2 badge badge-primary badge-pill" (click)="deleteProduct(product)">delete</span>
+
+    </div>
+
+
+</div>
+
+</div>
+
+</ul>
+
+
