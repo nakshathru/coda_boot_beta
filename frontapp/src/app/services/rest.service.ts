@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const productUrl = "http://localhost:2500/api/";
-const userUrl ="http://localhost:3500/api/"
+const productUrl = 'http://localhost:2500/api/';
+const userUrl = 'http://localhost:3500/api/';
 
 interface Options {
   hasAuth ?: boolean;
@@ -11,7 +11,7 @@ interface Options {
   header?: HttpHeaders;
   payload?: any;
   params?: HttpParams;
-  isProduct ?:boolean;
+  isProduct ?: boolean;
 }
 
 interface ServerResponse {
@@ -23,8 +23,8 @@ interface ServerResponse {
     pagination ?: any;
     token: string;
     role: string;
-    username:string;
-    user:string;
+    username: string;
+    user: string;
 
 }
 
@@ -41,12 +41,11 @@ export class RestService {
         const isProduct = options.isProduct || false;
         let header = options.header || new HttpHeaders().set('Content-Type', 'application/json');
         let finalUrl;
-        if(isProduct){
-            finalUrl=productUrl+options.url
-        }
-        else { finalUrl=userUrl+options.url}
+        if (isProduct) {
+            finalUrl = productUrl + options.url;
+        } else { finalUrl = userUrl + options.url; }
         if (hasAuth) {
-            header = header.set('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
+            header = header.set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
         }
         return this.httpClient.post<ServerResponse>(finalUrl, options.payload, {headers: header});
 
@@ -57,12 +56,11 @@ export class RestService {
         const isProduct = options.isProduct || false;
         let header = options.header || new HttpHeaders().set('Content-Type', 'application/json');
         let finalUrl;
-        if(isProduct){
-            finalUrl=productUrl+options.url
-        }
-        else { finalUrl=userUrl+options.url}
+        if (isProduct) {
+            finalUrl = productUrl + options.url;
+        } else { finalUrl = userUrl + options.url; }
         if (hasAuth) {
-            header = header.set('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
+            header = header.set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
         }
         return this.httpClient.put<ServerResponse>(finalUrl, options.payload, {headers: header});
 
@@ -73,16 +71,15 @@ export class RestService {
         const isProduct = options.isProduct || false;
         let header = options.header || new HttpHeaders().set('Content-Type', 'application/json');
         let finalUrl;
-        if(isProduct){
-            finalUrl=productUrl+options.url
-        }
-        else { finalUrl=userUrl+options.url}
+        if (isProduct) {
+            finalUrl = productUrl + options.url;
+        } else { finalUrl = userUrl + options.url; }
         if (hasAuth) {
-            header = header.set('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
+            header = header.set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
         }
         const params = options.params;
-        header = header.append('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
-        return this.httpClient.delete<ServerResponse>(finalUrl, {headers:header,params:params});
+        header = header.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
+        return this.httpClient.delete<ServerResponse>(finalUrl, {headers: header, params});
     }
 
     get(options: Options) {
@@ -91,16 +88,15 @@ export class RestService {
         let header = options.header || new HttpHeaders().set('Content-Type', 'application/json');
         const payload = options.payload;
         let finalUrl;
-        if(isProduct){
-            finalUrl=productUrl+options.url
-        }
-        else { finalUrl=userUrl+options.url}
+        if (isProduct) {
+            finalUrl = productUrl + options.url;
+        } else { finalUrl = userUrl + options.url; }
         if (hasAuth) {
-            header = header.set('Authorization','Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
+            header = header.set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token);
         }
         header = header.append('Access-Control-Allow-Origin', '*');
-        console.log(header,"here header");
-        
+        console.log(header, 'here header');
+
         return this.httpClient.get<ServerResponse>(finalUrl, {headers: header, params: payload});
     }
 

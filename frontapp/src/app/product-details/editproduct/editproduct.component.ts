@@ -12,26 +12,26 @@ import { ListproductsComponent } from '../listproducts/listproducts.component';
 })
 export class EditproductComponent implements OnInit {
 
-  productdata:any;
+  productdata: any;
   editForm: FormGroup;
   constructor(private fb: FormBuilder, private router: Router,
-    public dialogRef: MatDialogRef<ListproductsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.productdata=data
+              public dialogRef: MatDialogRef<ListproductsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.productdata = data;
       this.editForm = this.fb.group({
         name: ['', Validators.required],
         category: '',
-        description:''
+        description: ''
       });
- 
+
   }
 
   ngOnInit() {
-  
-    
+
+
   }
 
-  editUser(){
+  editUser() {
 
   }
 

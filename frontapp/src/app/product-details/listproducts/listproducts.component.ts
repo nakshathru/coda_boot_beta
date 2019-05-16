@@ -12,68 +12,68 @@ import { EditproductComponent } from '../editproduct/editproduct.component';
 export class ListproductsComponent implements OnInit {
 
   name: String;
-  category:String;
-    constructor(public product: ProductService,public dialog: MatDialog) { }
-    productlist:any;
+  category: String;
+    constructor(public product: ProductService, public dialog: MatDialog) { }
+    productlist: any;
     ngOnInit() {
-      this.getProductList()
+      this.getProductList();
     }
-  
-    getProductList(){
-      this.product.listProducts().then((data)=>{
+
+    getProductList() {
+      this.product.listProducts().then((data) => {
         console.log(data);
-        this.productlist=data;
-        
-        
-      })
+        this.productlist = data;
+
+
+      });
     }
-  
+
     openDialog(): void {
       const dialogRef = this.dialog.open(CreateproductComponent, {
         width: '500px',
        data: {name: this.name, category: this.category}
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         console.log(result);
-        
-         if (result){
-          this.product.insertProduct(result.name,result.category,result.description).then(() => {
-            console.log("added product");
-            this.getProductList()
-          })
+
+        if (result) {
+          this.product.insertProduct(result.name, result.category, result.description).then(() => {
+            console.log('added product');
+            this.getProductList();
+          });
         }
-  
+
       });
     }
-  
+
     openDialogEdit(product): void {
       const dialogRef = this.dialog.open(EditproductComponent, {
         width: '500px',
        data: product
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         console.log(result);
-          if (result){
-          this.product.editProduct(result.name,result.category,result.description,result.id).then(() => {
-            console.log("edited product");
-            this.getProductList()
-            
-          })
+        if (result) {
+          this.product.editProduct(result.name, result.category, result.description, result.id).then(() => {
+            console.log('edited product');
+            this.getProductList();
+
+          });
         }
-  
+
       });
     }
-  
-    deleteProduct(product){
-      
-       this.product.deleteProduct(product.id).then(()=> {
-        this.getProductList()
-      })
+
+    deleteProduct(product) {
+
+       this.product.deleteProduct(product.id).then(() => {
+        this.getProductList();
+      });
     }
-  
+
   }
-  
+
