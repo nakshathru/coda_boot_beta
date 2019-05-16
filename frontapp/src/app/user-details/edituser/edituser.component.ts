@@ -12,27 +12,27 @@ import { ListusersComponent } from '../listusers/listusers.component';
 })
 export class EdituserComponent implements OnInit {
 
-
-  userdata: any;
+ 
+  userdata:any;
   editForm: FormGroup;
   constructor(private fb: FormBuilder, private router: Router,
-              public dialogRef: MatDialogRef<ListusersComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      this.userdata = data;
+    public dialogRef: MatDialogRef<ListusersComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.userdata=data
       this.editForm = this.fb.group({
         name: ['', Validators.required],
         phone: '',
-        place: ''
+        place:''
       });
-
+ 
   }
 
   ngOnInit() {
-
-
+  
+    
   }
 
-  editUser() {
+  editUser(){
 
   }
 

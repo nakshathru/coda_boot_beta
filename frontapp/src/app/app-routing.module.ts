@@ -8,12 +8,12 @@ import { CreateproductComponent } from './product-details/createproduct/createpr
 import { EditproductComponent } from './product-details/editproduct/editproduct.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'createuser', component: CreateuserComponent},
-  {path: 'edituser', component: EdituserComponent},
-  {path: 'createproduct', component: CreateproductComponent},
-  {path: 'editproduct', component: EditproductComponent}
+  {path:'', component:HomeComponent},
+  {path:'login',component:LoginComponent},
+  {path:'createuser',component:CreateuserComponent},
+  {path:'edituser',component:EdituserComponent},
+  {path:'createproduct',component:CreateproductComponent},
+  {path:'editproduct',component:EditproductComponent}
 
 ];
 

@@ -15,12 +15,12 @@ export interface DialogData {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    errors: any;
+    errors:any
   createForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router,
-              public dialogRef: MatDialogRef<HomeComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    public dialogRef: MatDialogRef<HomeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       password: ''
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.errors = this.data.error;
-
+    this.errors=this.data['error'];
+    
   }
 
 

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListusersComponent } from './listusers/listusers.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatTableModule,
-  MatDividerModule,
+import { MatToolbarModule, 
+  MatFormFieldModule, 
+  MatInputModule, 
+  MatOptionModule, 
+  MatSelectModule, 
+  MatIconModule, 
+  MatButtonModule, 
+  MatCardModule, 
+  MatTableModule, 
+  MatDividerModule, 
   MatSnackBarModule } from '@angular/material';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { EdituserComponent } from './edituser/edituser.component';
@@ -20,15 +20,15 @@ import { EdituserComponent } from './edituser/edituser.component';
   declarations: [ListusersComponent, CreateuserComponent, EdituserComponent],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-  MatInputModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatTableModule,
-  MatDividerModule,
+    MatFormFieldModule, 
+  MatInputModule, 
+  MatOptionModule, 
+  MatSelectModule, 
+  MatIconModule, 
+  MatButtonModule, 
+  MatCardModule, 
+  MatTableModule, 
+  MatDividerModule, 
   MatSnackBarModule,
   MatToolbarModule,
   MatDialogModule,
@@ -36,7 +36,7 @@ import { EdituserComponent } from './edituser/edituser.component';
   FormsModule
 
   ],
-  exports: [
+  exports:[
     ListusersComponent
   ]
 })

@@ -7,7 +7,7 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private user: UserService) {
+  constructor(private user: UserService){
    // this.user.getUserStatus()
   }
   title = 'frontapp';

@@ -11,7 +11,7 @@ import { ProductDetailsModule } from './product-details/product-details.module';
 import { UserService } from './services/user.service';
 import { ProductService } from './services/product.service';
 import { RestService } from './services/rest.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/interceptor';
 

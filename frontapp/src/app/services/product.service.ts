@@ -6,25 +6,25 @@ import { RestService } from './rest.service';
 })
 export class ProductService {
 
-  constructor(private restClient: RestService) { }
+  constructor(private restClient:RestService) { }
 
-  listProducts() {
+  listProducts(){
     return new Promise((resolve, reject) => {
-      this.restClient.get({ hasAuth: false, isProduct: true, url: 'products/'}).subscribe((data) => {
+      this.restClient.get({ hasAuth: false,isProduct:true, url: 'products/'}).subscribe((data) => {
         resolve(data);
            },
         (err) => { reject(err); }
       );
     });
   }
-  insertProduct(name, category, description) {
+  insertProduct(name,category,description){
       const product = {
-        name,
-        category,
-        description
+        name: name,
+        category: category,
+        description: description
       };
       return new Promise((resolve, reject) => {
-        this.restClient.post({ hasAuth: false, isProduct: true, url: 'products/', payload: product}).subscribe((data) => {
+        this.restClient.post({ hasAuth: false,isProduct:true,url: 'products/',payload:product}).subscribe((data) => {
           resolve(data);
              },
           (err) => { reject(err); }
@@ -32,23 +32,23 @@ export class ProductService {
       });
 
   }
-  editProduct(name, category, description, id) {
+  editProduct(name,category,description,id){
     const product = {
-      name,
-      category,
-      description
+      name: name,
+      category: category,
+      description: description
     };
     return new Promise((resolve, reject) => {
-      this.restClient.put({ hasAuth: false, isProduct: true, url: 'products/' + id, payload: product}).subscribe((data) => {
+      this.restClient.put({ hasAuth: false,isProduct:true,url: 'products/'+id,payload:product}).subscribe((data) => {
         resolve(data);
            },
         (err) => { reject(err); }
       );
     });
   }
-  deleteProduct(id) {
+  deleteProduct(id){
     return new Promise((resolve, reject) => {
-      this.restClient.delete({ hasAuth: false, isProduct: true, url: 'products/' + id}).subscribe((data) => {
+      this.restClient.delete({ hasAuth:false,isProduct:true,url: 'products/'+id}).subscribe((data) => {
         resolve(data);
            },
         (err) => { reject(err); }
