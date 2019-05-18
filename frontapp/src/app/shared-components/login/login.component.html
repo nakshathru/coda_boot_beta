@@ -20,7 +20,27 @@
         <br>
         <mat-divider></mat-divider>
         <br><br>
-        <button type="submit" [mat-dialog-close]="data" class="mx-auto"  mat-raised-button color="primary">Login</button>
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-6">
+                <button type="submit" [mat-dialog-close]="data" class="mr-auto mt-4 pt-1"  mat-raised-button color="primary">SignIn</button>
+              </div>
+                <div class="col-md-6 text-right">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                          <h4 class="badge badge-info text-left">New User ?</h4>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <button class="mr-auto signup-btn" [mat-dialog-close] (click)="signUp()" mat-raised-button color="primary">SignUp</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+          </div>
+        </div>
       </div>
       <div *ngIf="errors">
         <div  *ngFor="let error of errors">

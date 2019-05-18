@@ -15,9 +15,12 @@ import { MatToolbarModule,
   MatTableModule, 
   MatDividerModule, 
   MatSnackBarModule } from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent],
+  declarations: [HeaderComponent, LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     MatFormFieldModule, 
@@ -33,7 +36,9 @@ import { MatToolbarModule,
     FormsModule,
     MatDialogModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatButtonToggleModule
   ],
   exports: [HeaderComponent
   

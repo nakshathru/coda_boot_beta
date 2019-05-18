@@ -24,8 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().disable();
     }
 
-
-
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -36,17 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Bean
-    public JwtProvider jwtProvider(){
-
-            return new JwtProvider();
-
-    }
-
-
-
-
 
 
 }

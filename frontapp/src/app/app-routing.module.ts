@@ -6,6 +6,7 @@ import { CreateuserComponent } from './user-details/createuser/createuser.compon
 import { EdituserComponent } from './user-details/edituser/edituser.component';
 import { CreateproductComponent } from './product-details/createproduct/createproduct.component';
 import { EditproductComponent } from './product-details/editproduct/editproduct.component';
+import { SignupComponent } from './shared-components/signup/signup.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'createuser',component:CreateuserComponent},
   {path:'edituser',component:EdituserComponent},
   {path:'createproduct',component:CreateproductComponent},
-  {path:'editproduct',component:EditproductComponent}
+  {path:'editproduct',component:EditproductComponent},
+  {path:'signup',component:SignupComponent}
 
 ];
 

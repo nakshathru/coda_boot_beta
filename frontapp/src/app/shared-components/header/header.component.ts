@@ -51,8 +51,8 @@ export class HeaderComponent implements OnInit {
           console.log(data); 
           localStorage.setItem('currentUser', JSON.stringify({ token: data['token'] }));
           console.log("signed in user");
-          this.user.listUsers();
           this.status='Logout'
+          this.user.listUsers();
 
         })
         .catch((e)=>{

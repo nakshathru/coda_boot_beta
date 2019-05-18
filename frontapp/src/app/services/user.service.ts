@@ -100,6 +100,16 @@ getToken(){
   var currentUser=JSON.parse(localStorage.getItem('currentUser'))
   return currentUser.token
 }
+signupUser(body){
+  return new Promise((resolve, reject) => {
+    this.restClient.post({ hasAuth: false, url: 'auth/signup/',payload:body}).subscribe((data) => {
+      resolve(data);
+         },
+      (err) => { reject(err); }
+    );
+  });
+
+}
 }
 
 
