@@ -22,43 +22,34 @@ public class JwtProvider {
     @Value("${global.coda.jwtExpiration}")
     private String jwtExpiration;
 
-    public String generateJwtToken(Authentication authentication){
-
+    public String generateJwtToken(Authentication authentication) {
 
         System.out.println("TEST LOG JP");
         Calendar timeout = Calendar.getInstance();
         timeout.setTimeInMillis(timeout.getTimeInMillis() + Long.parseLong(jwtExpiration));
         UserPrinciple userPrinciple = (UserPrinciple) authentication.getPrincipal();
-        return Jwts.builder()
-                .setSubject((userPrinciple.getUsername()))
-                .setIssuedAt(new Date())
-                .setExpiration(timeout.getTime())
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
+        return Jwts.builder().setSubject((userPrinciple.getUsername())).setIssuedAt(new Date())
+                .setExpiration(timeout.getTime()).signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
     }
 
-    public  String getUserNameFromJwtToken(String token){
-        return  Jwts.parser()
-                    .setSigningKey(jwtSecret)
-                    .parseClaimsJws(token)
-                    .getBody().getSubject();
+    public String getUserNameFromJwtToken(String token) {
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateJwtToken(String authToken){
+    public boolean validateJwtToken(String authToken) {
 
-        try{
+        try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
+        } catch (SignatureException e) {
+            logger.error("Invalid JWT signature -> Message: {}", e);
+        } catch (MalformedJwtException e) {
+            logger.error("Invalid JWT token -> Message: {}", e);
+        } catch (UnsupportedJwtException e) {
+            logger.error("Unsupported JWT token -> Message: {}", e);
+        } catch (IllegalArgumentException e) {
+            logger.error("JWT claims string is empty -> Message: {}", e);
         }
-     catch (SignatureException e) {
-        logger.error("Invalid JWT signature -> Message: {}", e);
-    } catch (MalformedJwtException e) {
-        logger.error("Invalid JWT token -> Message: {}", e);
-    }  catch (UnsupportedJwtException e) {
-        logger.error("Unsupported JWT token -> Message: {}", e);
-    } catch (IllegalArgumentException e) {
-        logger.error("JWT claims string is empty -> Message: {}", e);
-    }
         return false;
     }
 }

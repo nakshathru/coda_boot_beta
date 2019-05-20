@@ -1,4 +1,5 @@
 package global.coda.auth_server.messages.response;
+
 import lombok.Data;
 
 @Data
@@ -10,6 +11,5 @@ public class JwtResponse {
     public JwtResponse(String accessToken) {
         this.token = accessToken;
     }
-
 
 }

@@ -1,6 +1,5 @@
 package global.coda.auth_server.models;
 
-
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -20,14 +19,15 @@ public class UserDetails {
     @NotBlank
     private String name;
 
-    @NotBlank @Length(min = 10, max = 10)
+    @NotBlank
+    @Length(min = 10, max = 10)
     @Pattern(regexp = "^[0-9]{10}")
     private String phone;
 
     @NotBlank
     private String location;
 
-    public UserDetails(){
+    public UserDetails() {
         super();
 
     }
@@ -37,6 +37,6 @@ public class UserDetails {
         this.id = id;
         this.name = name;
         this.phone = phone;
-        this.location=location;
+        this.location = location;
     }
 }

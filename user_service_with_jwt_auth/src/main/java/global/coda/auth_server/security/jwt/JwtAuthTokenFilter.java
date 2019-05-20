@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @Component
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
@@ -31,14 +32,14 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
 
             throws ServletException, IOException {
 
-        try{
-            String jwt= getJwt(request);
+        try {
+            String jwt = getJwt(request);
 
-            if(jwt != null && tokenProvider.validateJwtToken(jwt)){
-                String username= tokenProvider.getUserNameFromJwtToken(jwt);
-                UserDetails userDetails =userDetailsService.loadUserByUsername(username);
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+            if (jwt != null && tokenProvider.validateJwtToken(jwt)) {
+                String username = tokenProvider.getUserNameFromJwtToken(jwt);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
@@ -48,15 +49,14 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
 
-
     }
 
-    private String getJwt(HttpServletRequest request){
+    private String getJwt(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
-        System.out.println("HEADER is here"+authHeader);
+        System.out.println("HEADER is here" + authHeader);
 
-        if(authHeader != null && authHeader.startsWith("Bearer")){
-            return authHeader.replace("Bearer","");
+        if (authHeader != null && authHeader.startsWith("Bearer")) {
+            return authHeader.replace("Bearer", "");
         }
         return null;
 
