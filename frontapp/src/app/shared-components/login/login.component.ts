@@ -15,24 +15,26 @@ export interface DialogData {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    errors:any
+    errors: any;
   createForm: FormGroup;
+  responeError: any;
 
   constructor(private fb: FormBuilder, private router: Router,
-    public dialogRef: MatDialogRef<HomeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+              public dialogRef: MatDialogRef<HomeComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       password: ''
     });
+    this.responeError = this.data;
   }
 
   ngOnInit() {
-    this.errors=this.data['error'];
-    
+    this.errors = this.responeError.error;
+
   }
 
-  signUp(){
+  signUp() {
     this.router.navigate(['/signup']);
   }
 

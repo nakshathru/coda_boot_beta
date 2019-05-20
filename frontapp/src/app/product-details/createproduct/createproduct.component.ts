@@ -6,7 +6,7 @@ import { ListproductsComponent } from '../listproducts/listproducts.component';
 export interface DialogData {
   name: string;
   category: string;
-  description
+  description;
 }
 @Component({
   selector: 'app-createproduct',
@@ -18,21 +18,21 @@ export class CreateproductComponent implements OnInit {
   createForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router,
-    public dialogRef: MatDialogRef<ListproductsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+              public dialogRef: MatDialogRef<ListproductsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       category: '',
-      description:''
+      description: ''
     });
   }
 
   ngOnInit() {
   }
 
-  addUser(name){
-  
-    
+  addUser(name) {
+
+
   }
 
 }

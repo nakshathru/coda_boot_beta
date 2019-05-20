@@ -17,21 +17,21 @@ export class CreateuserComponent implements OnInit {
   createForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router,
-    public dialogRef: MatDialogRef<ListusersComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+              public dialogRef: MatDialogRef<ListusersComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       phone: '',
-      place:''
+      place: ''
     });
   }
 
   ngOnInit() {
   }
 
-  addUser(name){
-  
-    
+  addUser(name) {
+
+
   }
 
 }

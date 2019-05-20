@@ -9,13 +9,13 @@ import { EditproductComponent } from './product-details/editproduct/editproduct.
 import { SignupComponent } from './shared-components/signup/signup.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'createuser',component:CreateuserComponent},
-  {path:'edituser',component:EdituserComponent},
-  {path:'createproduct',component:CreateproductComponent},
-  {path:'editproduct',component:EditproductComponent},
-  {path:'signup',component:SignupComponent}
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'createuser', component: CreateuserComponent},
+  {path: 'edituser', component: EdituserComponent},
+  {path: 'createproduct', component: CreateproductComponent},
+  {path: 'editproduct', component: EditproductComponent},
+  {path: 'signup', component: SignupComponent}
 
 ];
 
