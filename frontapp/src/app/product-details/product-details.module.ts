@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ListproductsComponent } from './listproducts/listproducts.component';
-import { EditproductComponent } from './editproduct/editproduct.component';
-import { CreateproductComponent } from './createproduct/createproduct.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule,
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ListproductsComponent } from "./listproducts/listproducts.component";
+import { EditproductComponent } from "./editproduct/editproduct.component";
+import { CreateproductComponent } from "./createproduct/createproduct.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
@@ -15,9 +16,14 @@ import { MatToolbarModule,
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule } from '@angular/material';
+  MatSnackBarModule
+} from "@angular/material";
 @NgModule({
-  declarations: [ListproductsComponent, EditproductComponent, CreateproductComponent],
+  declarations: [
+    ListproductsComponent,
+    EditproductComponent,
+    CreateproductComponent
+  ],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -35,11 +41,6 @@ import { MatToolbarModule,
     ReactiveFormsModule,
     MatToolbarModule
   ],
-  exports: [
-ListproductsComponent,
-EditproductComponent,
-CreateproductComponent
-
-  ]
+  exports: [ListproductsComponent, EditproductComponent, CreateproductComponent]
 })
-export class ProductDetailsModule { }
+export class ProductDetailsModule {}

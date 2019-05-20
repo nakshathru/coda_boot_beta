@@ -1,87 +1,136 @@
 <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm col-sm-offset-5">
-          <div class="card mx-5">
-  
-            <div class="image">
-              <img src="assets/card-background.jpg" width="100%">
-            </div>
-  
-            <div class="text">
-              <div class="fab">&#43;</div>
-              <h3 class="text-center">Sign Up Here (Admins Beware!)</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm col-sm-offset-5">
+        <div class="card mx-5">
+          <div class="image">
+            <img src="assets/card-background.jpg" width="100%" />
+          </div>
 
+          <div class="text">
+            <div class="fab">&#43;</div>
+            <h3 class="text-center">Sign Up Here (Admins Beware!)</h3>
 
-              <form [formGroup]="signupForm" >
+            <form [formGroup]="signupForm">
+              <div class="form-container">
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Enter your Name"
+                    formControlName="name"
+                    #name
+                    required
+                  />
+                  <mat-error
+                    *ngIf="signupForm.value.name || !signupForm.value.name"
+                    >{{ getErrorMessage("name") }}</mat-error
+                  >
+                </mat-form-field>
+              </div>
 
-                  <div class="form-container">
-                      <mat-form-field>
-                      <input matInput placeholder="Enter your Name" formControlName="name" #name required>
-                      <mat-error *ngIf="signupForm.value.name||!signupForm.value.name">{{getErrorMessage('name')}}</mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="form-container">
-                      <mat-form-field>
-                      <input matInput placeholder="Enter your email" formControlName="email" #email required>
-                      <mat-error *ngIf="signupForm.value.email||!signupForm.value.email">{{getErrorMessage('email')}}</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="form-container">
-                    <mat-form-field>
-                    <input matInput placeholder="Enter your Username" formControlName="username" #username required>
-                    <mat-error *ngIf="signupForm.value.username||!signupForm.value.username">{{getErrorMessage('name')}}</mat-error>
-                  </mat-form-field>
+              <div class="form-container">
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Enter your email"
+                    formControlName="email"
+                    #email
+                    required
+                  />
+                  <mat-error
+                    *ngIf="signupForm.value.email || !signupForm.value.email"
+                    >{{ getErrorMessage("email") }}</mat-error
+                  >
+                </mat-form-field>
               </div>
               <div class="form-container">
-                  <mat-form-field>
-                      <input matInput type="password" placeholder="Enter your Password" formControlName="password" #password required>
-                      <mat-error *ngIf="signupForm.value.password||!signupForm.value.password">{{getErrorMessage('password')}}</mat-error>
-                    </mat-form-field>
-  
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Enter your Username"
+                    formControlName="username"
+                    #username
+                    required
+                  />
+                  <mat-error
+                    *ngIf="
+                      signupForm.value.username || !signupForm.value.username
+                    "
+                    >{{ getErrorMessage("name") }}</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="password"
+                    placeholder="Enter your Password"
+                    formControlName="password"
+                    #password
+                    required
+                  />
+                  <mat-error
+                    *ngIf="
+                      signupForm.value.password || !signupForm.value.password
+                    "
+                    >{{ getErrorMessage("password") }}</mat-error
+                  >
+                </mat-form-field>
               </div>
               <div class="form-container">
                 <div class="container">
                   <div class="row">
                     <div class="col-sm">
-                        <div class="alert alert-primary text-secondary my-1 text-center" role="alert">
-                            Select Role!!!
-                          </div>
+                      <div
+                        class="alert alert-primary text-secondary my-1 text-center"
+                        role="alert"
+                      >
+                        Select Role!!!
+                      </div>
 
-                          <div class="container">
-                              <div class="row">
-                                <div class="col justify-content-center ">  
-                                        <mat-button-toggle-group formControlName="role" #role class="toggle-grp" name="fontStyle" aria-label="Font Style">
-                                            <mat-button-toggle class="toggle-field" value="user">User</mat-button-toggle>
-                                            <mat-button-toggle class="toggle-field" value="admin">Admin</mat-button-toggle>
-                                          </mat-button-toggle-group>
-                                </div>              
-
-                              </div>
-            
+                      <div class="container">
+                        <div class="row">
+                          <div class="col justify-content-center ">
+                            <mat-button-toggle-group
+                              formControlName="role"
+                              #role
+                              class="toggle-grp"
+                              name="fontStyle"
+                              aria-label="Font Style"
+                            >
+                              <mat-button-toggle
+                                class="toggle-field"
+                                value="user"
+                                >User</mat-button-toggle
+                              >
+                              <mat-button-toggle
+                                class="toggle-field"
+                                value="admin"
+                                >Admin</mat-button-toggle
+                              >
+                            </mat-button-toggle-group>
                           </div>
-                    
+                        </div>
+                      </div>
                     </div>
-                   
                   </div>
-
                 </div>
-
-            </div>
-          
-            <div class="form-container mt-5">
-                <button (click)="onSubmit()" [disabled]="signupForm.pristine || signupForm.invalid" class="btn btn-primary register-button mx-auto">Register</button>
               </div>
-              </form>
 
-
-
-
-
-            </div>
+              <div class="form-container mt-5">
+                <button
+                  (click)="onSubmit()"
+                  [disabled]="signupForm.pristine || signupForm.invalid"
+                  class="btn btn-primary register-button mx-auto"
+                >
+                  Register
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>

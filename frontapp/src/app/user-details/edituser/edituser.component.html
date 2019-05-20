@@ -1,32 +1,35 @@
-
-
-
 <div>
-  <br>
+  <br />
   <mat-card>
     <section class="mat-typography">
       <h3>Edit User</h3>
     </section>
     <mat-divider></mat-divider>
-    <br>
+    <br />
     <div class="create-form">
       <mat-form-field class="field-full-width full-field">
-        <input matInput placeholder="name" [(ngModel)]="userdata.name">
+        <input matInput placeholder="name" [(ngModel)]="userdata.name" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="field-full-width full-field">
+        <input matInput placeholder="phone" [(ngModel)]="userdata.phone" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="field-full-width full-field">
+        <input matInput placeholder="place" [(ngModel)]="userdata.location" />
+      </mat-form-field>
 
-      </mat-form-field>
-      <br>
-      <mat-form-field class="field-full-width full-field">
-        <input matInput placeholder="phone" [(ngModel)]="userdata.phone" >
-      </mat-form-field>
-      <br>
-      <mat-form-field class="field-full-width full-field">
-          <input matInput placeholder="place" [(ngModel)]="userdata.location" >
-        </mat-form-field>
-      
-      
       <mat-divider></mat-divider>
-      <br><br>
-      <button type="submit" [mat-dialog-close]="userdata" (click)="editUser(userdata)"  mat-raised-button color="primary">Edit</button>
+      <br /><br />
+      <button
+        type="submit"
+        [mat-dialog-close]="userdata"
+        (click)="editUser(userdata)"
+        mat-raised-button
+        color="primary"
+      >
+        Edit
+      </button>
     </div>
   </mat-card>
 </div>
