@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpParams, HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { environment } from 'src/environments/environment';
 
-const productUrl = "http://localhost:2500/api/";
-const userUrl = "http://localhost:3500/api/";
+const productUrl = environment.productUrl
+const userUrl = environment.userUrl
 
 interface Options {
   hasAuth?: boolean;
@@ -31,7 +31,9 @@ interface ServerResponse {
   providedIn: "root"
 })
 export class RestService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    
+  }
 
   post(options: Options) {
     const hasAuth = options.hasAuth || false;
