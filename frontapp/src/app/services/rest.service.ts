@@ -1,31 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpParams, HttpClient } from "@angular/common/http";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
-
+import { Options } from '../models/options';
+import { ServerResponse } from '../models/server.response';
 const productUrl = environment.productUrl
 const userUrl = environment.userUrl
 
-interface Options {
-  hasAuth?: boolean;
-  url: string;
-  header?: HttpHeaders;
-  payload?: any;
-  params?: HttpParams;
-  isProduct?: boolean;
-}
-
-interface ServerResponse {
-  hasError: boolean;
-  message: string;
-  payload?: any;
-  statusCode: number;
-  graph?: any;
-  pagination?: any;
-  token: string;
-  role: string;
-  username: string;
-  user: string;
-}
 
 @Injectable({
   providedIn: "root"
