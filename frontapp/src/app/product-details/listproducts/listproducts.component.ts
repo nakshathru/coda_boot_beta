@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ProductService } from "src/app/services/product.service";
+import { ProductService } from "../../services/product.service";
 import { MatDialog } from "@angular/material";
 import { CreateproductComponent } from "../createproduct/createproduct.component";
 import { EditproductComponent } from "../editproduct/editproduct.component";

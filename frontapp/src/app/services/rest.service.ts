@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Options } from '../models/options';
 import { ServerResponse } from '../models/server.response';
 const productUrl = environment.productUrl
@@ -11,6 +11,7 @@ const userUrl = environment.userUrl
   providedIn: "root"
 })
 export class RestService {
+  
   constructor(private httpClient: HttpClient) {
     
   }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject, PLATFORM_ID } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { UserService } from "src/app/services/user.service";
+import { UserService } from "../../services/user.service";
 import { LoginComponent } from "../login/login.component";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: "app-header",
@@ -14,12 +15,15 @@ export class HeaderComponent implements OnInit {
   phone: string;
   errorMessage: any;
   jwt: any;
-  constructor(public dialog: MatDialog, private user: UserService) {}
+  constructor(public dialog: MatDialog, private user: UserService, @Inject(PLATFORM_ID) private platformId:Object) {}
 
   ngOnInit() {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      this.status = "Logout";
+
+    if(isPlatformBrowser(this.platformId)){
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) {
+        this.status = "Logout";
+      }
     }
   }
 

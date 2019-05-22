@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { HomeComponent } from "src/app/home/home.component";
+import { HomeComponent } from "../../home/home.component";
 
 export interface DialogData {
   name: string;

@@ -6,6 +6,7 @@ import { ListusersComponent } from "../listusers/listusers.component";
 export interface DialogData {
   name: string;
   phone: string;
+  place: string;
 }
 @Component({
   selector: "app-createuser",

@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from "@angular/core";
 import { MatDialog } from "@angular/material";
 import { LoginComponent } from "../shared-components/login/login.component";
 import { UserService } from "../services/user.service";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: "app-home",
@@ -15,16 +16,18 @@ export class HomeComponent implements AfterViewInit {
   errorMessage: any;
   jwt: any;
 
-  constructor(public dialog: MatDialog, private user: UserService) {}
+  constructor(public dialog: MatDialog, private user: UserService,@Inject(PLATFORM_ID) private platformId:Object) {}
 
   ngAfterViewInit() {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (!currentUser) {
-      setTimeout(() => {
-        this.openDialog();
-      }, 1000);
-    } else {
-      this.user.listUsers();
+    if(isPlatformBrowser(this.platformId)){
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) {
+        setTimeout(() => {
+          this.openDialog();
+        }, 1000);
+      } else {
+        this.user.listUsers();
+      }
     }
   }
 

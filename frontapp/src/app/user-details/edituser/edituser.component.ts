@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { DialogData } from "src/app/shared-components/login/login.component";
+import { DialogData } from "../../shared-components/login/login.component";
 import { ListusersComponent } from "../listusers/listusers.component";
 
 @Component({
@@ -29,5 +29,5 @@ export class EdituserComponent implements OnInit {
 
   ngOnInit() {}
 
-  editUser() {}
+  editUser(user) {}
 }
