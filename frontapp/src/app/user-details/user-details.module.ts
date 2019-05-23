@@ -16,8 +16,10 @@ import {
   MatDividerModule,
   MatSnackBarModule
 } from "@angular/material";
+import {DragDropModule} from '@angular/cdk/drag-drop'; 
 import { CreateuserComponent } from "./createuser/createuser.component";
 import { EdituserComponent } from "./edituser/edituser.component";
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
 @NgModule({
   declarations: [ListusersComponent, CreateuserComponent, EdituserComponent],
   imports: [
@@ -35,7 +37,9 @@ import { EdituserComponent } from "./edituser/edituser.component";
     MatToolbarModule,
     MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedComponentsModule,
+    DragDropModule
   ],
   exports: [ListusersComponent]
 })

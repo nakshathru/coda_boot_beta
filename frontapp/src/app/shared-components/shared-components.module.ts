@@ -17,12 +17,14 @@ import {
   MatDividerModule,
   MatSnackBarModule
 } from "@angular/material";
+import {DragDropModule} from '@angular/cdk/drag-drop'; 
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { SignupComponent } from "./signup/signup.component";
+import { UsercardComponent } from './usercard/usercard.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent, SignupComponent],
+  declarations: [HeaderComponent, LoginComponent, SignupComponent, UsercardComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -40,8 +42,9 @@ import { SignupComponent } from "./signup/signup.component";
     MatToolbarModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    DragDropModule
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent,UsercardComponent]
 })
 export class SharedComponentsModule {}

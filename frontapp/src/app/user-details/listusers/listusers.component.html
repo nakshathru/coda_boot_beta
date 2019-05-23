@@ -1,53 +1,49 @@
-<div class="jumbotron mx-auto">
-  <h1 class="display-4">User Details</h1>
-  <button type="button" class="btn btn-primary" (click)="openDialog()">
-    Add new user
-  </button>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm mb-2">
-      <h4>Name</h4>
-    </div>
-    <div class="col-sm mb-2">
-      <h4>Phone</h4>
-    </div>
-    <div class="col-sm mb-2">
-      <h4>Place</h4>
-    </div>
-
-    <div class="col-sm mb-2">
-      <h4>Action</h4>
-    </div>
+<div class="body">
+  <div class="jumbotron mx-auto">
+    <h1 class="display-4">User Details</h1>
+    <button type="button" class="btn btn-primary" (click)="openDialog()">
+      Add new user
+    </button>
   </div>
-</div>
-
-<div *ngIf="showTable">
-  <ul class="list-group" *ngFor="let user of userlist">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm mb-2">
-          {{ user.name }}
-        </div>
-        <div class="col-sm mb-2">
-          {{ user.phone }}
-        </div>
-        <div class="col-sm mb-2">
-          {{ user.location }}
-        </div>
-
-        <div class="col-sm mb-2">
-          <span class="badge badge-primary badge-pill" (click)="editUser(user)"
-            >edit</span
-          >
-          <span
-            class=" ml-2 badge badge-primary badge-pill"
-            (click)="deleteUser(user)"
-            >delete</span
-          >
+  <div *ngIf="userlist[0]">
+    <div
+      cdkDropList
+      #userList="cdkDropList"
+      [cdkDropListData]="userlist"
+      [cdkDropListConnectedTo]="[deleteList]"
+    >
+      <div *ngFor="let user of userlist; let i = index">
+        <div *ngIf="i % 3 == 0" class="row justify-content-center">
+          <div cdkDrag (cdkDragStarted)="checkDrag($event)" class="col">
+            <app-usercard [userDetails]="user"></app-usercard>
+          </div>
+          <div cdkDrag (cdkDragStarted)="checkDrag($event)" class="col">
+            <div *ngIf="userlist.length > i + 1">
+              <app-usercard [userDetails]="userlist[i + 1]"></app-usercard>
+            </div>
+          </div>
+          <div cdkDrag (cdkDragStarted)="checkDrag($event)" class="col">
+            <div *ngIf="userlist.length > i + 2">
+              <app-usercard [userDetails]="userlist[i + 2]"></app-usercard>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </ul>
+  </div>
+
+  <div class="delete-container">
+    <div
+      cdkDropList
+      #deleteList="cdkDropList"
+      [cdkDropListConnectedTo]="[userlist]"
+      (cdkDropListEntered)="dropCheck($event)"
+      class="card drop-card bg-secondary text-light text-center py-2"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="card-body">
+        Drag & Drop Here To Delete User
+      </div>
+    </div>
+  </div>
 </div>

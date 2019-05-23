@@ -81,10 +81,6 @@ export class RestService {
       );
     }
     const params = options.params;
-    header = header.append(
-      "Authorization",
-      "Bearer " + JSON.parse(localStorage.getItem("currentUser")).token
-    );
     return this.httpClient.delete<ServerResponse>(finalUrl, {
       headers: header,
       params

@@ -1,3 +1,32 @@
+.body {
+  padding-bottom: 200px;
+}
 .badge-primary {
   cursor: pointer;
+}
+.user-card {
+  margin-left: 50px;
+}
+
+.user-header-image {
+  background-image: url("../../../assets/user_avatar.png");
+  background-size: cover;
+}
+.edit-btn {
+  text-align: center;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+.drop-card {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.display-container {
+  display: inline-block;
+}
+.vanish-container {
+  display: none;
 }

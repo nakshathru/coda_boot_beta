@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material";
 import { UserService } from "../../services/user.service";
 import { LoginComponent } from "../login/login.component";
 import { isPlatformBrowser } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-header",
@@ -15,10 +16,10 @@ export class HeaderComponent implements OnInit {
   phone: string;
   errorMessage: any;
   jwt: any;
-  constructor(public dialog: MatDialog, private user: UserService, @Inject(PLATFORM_ID) private platformId:Object) {}
+  constructor(public dialog: MatDialog, private user: UserService, @Inject(PLATFORM_ID) private platformId:Object,private route: ActivatedRoute) {}
 
   ngOnInit() {
-
+ 
     if(isPlatformBrowser(this.platformId)){
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (currentUser) {
