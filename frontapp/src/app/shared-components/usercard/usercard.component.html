@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center">
+  <mat-card class="user-card my-3">
+    <mat-card-header>
+      <div mat-card-avatar class="user-header-image"></div>
+      <mat-card-title> {{ userDetails.name }}</mat-card-title>
+      <mat-card-subtitle> {{ userDetails.phone }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h5>
+        Location : <span>{{ userDetails.location }}</span>
+      </h5>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <span
+          class="badge badge-primary badge-pill"
+          (click)="editUser(userDetails)"
+          >Edit</span
+        >
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

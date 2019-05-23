@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { UserService } from "../../services/user.service";
 import { CreateuserComponent } from "../createuser/createuser.component";
-import { EdituserComponent } from "../edituser/edituser.component";
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-listusers",
@@ -11,9 +11,10 @@ import { EdituserComponent } from "../edituser/edituser.component";
 })
 export class ListusersComponent implements OnInit {
   userlist: any;
-  showTable = false;
+  showTable = true;
   name: string;
   phone: string;
+
   constructor(public user: UserService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -23,6 +24,8 @@ export class ListusersComponent implements OnInit {
   getUserList() {
     this.user.currentUsers.subscribe(data => {
       this.userlist = data;
+      console.log(data);
+
       if (this.userlist[0]) {
         this.showTable = true;
       } else {
@@ -51,33 +54,23 @@ export class ListusersComponent implements OnInit {
     });
   }
 
-  openDialogEdit(user): void {
-    const dialogRef = this.dialog.open(EdituserComponent, {
-      width: "500px",
-      data: user
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-      console.log(result);
-      if (result) {
-        this.user
-          .editUser(result.name, result.phone, result.location, result.id)
-          .then(() => {
-            console.log("edited user");
-            this.user.listUsers();
-          });
-      }
-    });
-  }
-
-  editUser(user) {
-    this.openDialogEdit(user);
-  }
   deleteUser(user) {
     this.user.deleteUser(user.id).then(() => {
       console.log("user deleted");
       this.user.listUsers();
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event, "this one");
+    console.log(event.previousContainer.data, event.previousIndex);
+    this.deleteUser(this.userlist[event.previousIndex]);
+    //  console.log(event);
+  }
+  checkDrag(event) {
+    console.log("here starts");
+  }
+  dropCheck(event) {
+    console.log(event);
   }
 }
