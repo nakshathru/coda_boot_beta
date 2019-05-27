@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +32,8 @@ import java.util.Set;
 
 public class AuthController {
 
-    Logger logger = LoggerFactory.getLogger(AuthController.class);
 
+    
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -59,13 +60,19 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
+    public ResponseEntity<Object> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
+
+        HashMap<String, Object> map= new HashMap<>();
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return new ResponseEntity<>("Fail -> Username is already taken!", HttpStatus.BAD_REQUEST);
+            map.put("message","Username is already taken!");
+            map.put("status",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity<>("Fail -> Email is already in use!", HttpStatus.BAD_REQUEST);
+            map.put("message","Email is already in use!");
+            map.put("status",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
 
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
@@ -78,21 +85,21 @@ public class AuthController {
             switch (role) {
             case "admin":
                 Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-                        .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+                        .orElseThrow(() -> new RuntimeException("User Role not found."));
                 roles.add(adminRole);
 
                 break;
 
             default:
                 Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                        .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+                        .orElseThrow(() -> new RuntimeException("User Role not found."));
                 roles.add(userRole);
             }
         });
-
         user.setRoles(roles);
         userRepository.save(user);
-
-        return ResponseEntity.ok().body("User registered successfully!");
+        map.put("message","User registered successfully!");
+        map.put("status",HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }
