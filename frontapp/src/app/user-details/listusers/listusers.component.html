@@ -36,7 +36,7 @@
     <div
       cdkDropList
       #deleteList="cdkDropList"
-      [cdkDropListConnectedTo]="[userlist]"
+      [cdkDropListConnectedTo]="[userList]"
       (cdkDropListEntered)="dropCheck($event)"
       class="card drop-card bg-secondary text-light text-center py-2"
       (cdkDropListDropped)="drop($event)"
